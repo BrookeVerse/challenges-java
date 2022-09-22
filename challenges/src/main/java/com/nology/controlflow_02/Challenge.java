@@ -20,7 +20,7 @@ public class Challenge {
      * @return returns a string which is the concatenation of the 2 parameters
      */
     public String getFullName(String firstName, String lastName) {
-        return "";
+        return firstName + " " + lastName;
     }
 
     /***
@@ -31,7 +31,12 @@ public class Challenge {
      * @return returns a boolean based on whether the number is between 0 and the range limit
      */
     public boolean isWithinRange(int number, int rangeLimit) {
-        return false;
+        if (number > rangeLimit && number < rangeLimit){
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
 
@@ -50,7 +55,27 @@ public class Challenge {
      * @return returns the result of the equation
      */
     public int stringCalculator(int numberOne, int numberTwo, String operator) {
-        return -1;
+        if (numberOne < 0  || numberTwo < 0 ) {
+            return -1;
+        }
+        int result = 0;
+        switch (operator) {
+            case "+":
+                result = numberOne + numberTwo;
+                break;
+            case "-":
+                result = numberOne - numberTwo;
+                break;
+            case "*":
+                result = numberOne * numberTwo;
+                break;
+            case "/":
+                result = numberOne / numberTwo;
+                break;
+            default:
+                return -1;
+        }
+        return result;
     }
 
 
@@ -70,7 +95,12 @@ public class Challenge {
      * @return If we need to wake up or not based on the conditions above.
      */
     public boolean shouldWakeUp(boolean barking, int hourOfDay) {
-        return false;
+        if (hourOfDay < 8 || hourOfDay > 22){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     /***
@@ -83,7 +113,18 @@ public class Challenge {
      * character in the string: a"
      */
     public String getMiddleCharacter(String word) {
-        return "";
+        if (word.contains(" ")  || word == "") return "Invalid Input";
+        int position;
+        int length;
+
+        if (word.length() % 2 == 0) {
+            position = word.length() / 2 -1;
+            length = 2;
+        } else {
+            position = word.length() / 2;
+            length = 1;
+        }
+        return word.substring(position, position + length);
     }
 
 

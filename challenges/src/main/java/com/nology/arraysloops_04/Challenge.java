@@ -1,5 +1,7 @@
 package com.nology.arraysloops_04;
 
+import java.util.stream.IntStream;
+
 /**
  *   All challenges in this repository are separated into three levels: Foundation, Intermediate, and Advanced.
  *   The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
@@ -21,7 +23,11 @@ public class Challenge {
      * @return a new array containing the first and last items in the given array e.g. ["Ollie", "Bex"]
      */
     public String[] getFirstAndLast(String[] namesArr) {
-        return new String[0];
+
+        if (namesArr.length == 0){
+            return new String[0];
+        }
+        return new String[]{namesArr[0], namesArr[namesArr.length-1]};
     }
 
     /***
@@ -31,7 +37,7 @@ public class Challenge {
      * @return an amount e.g. 104
      */
     public int totalAges(int[] agesArr) {
-        return -1;
+        return IntStream.of(agesArr).sum();
     }
 
     /***
@@ -41,7 +47,13 @@ public class Challenge {
      * @return Amount of odd numbers e.g. 3
      */
     public int getAmountOfOddNumbers(int[] numbersArr) {
-        return -1;
+        int oddCount = 0;
+        for (int number: numbersArr) {
+            if (number % 2 == 1){
+                ++oddCount;
+            }
+        }
+        return oddCount;
     }
 
     // -------------- INTERMEDIATE --------------
@@ -57,16 +69,23 @@ public class Challenge {
      * @return a new array of all numbers between and including the min and max number. e.g. [3, 4, 5, 6]
      */
     public int[] getRange(int min, int max) {
-        return new int[] {};
+        if (min > max) {
+            return new int[] {};
+        } else {
+            return IntStream.rangeClosed(min, max).toArray();
+        }
+        
     }
 
     /**
      * Swap the first and last names in a string
+     *
      * @param fullName e.g. "Andy Evans"
      * @return a string with the last name, followed by the first name e.g. "Evans Andy"
      */
-    public String swapNames(String fullName) {
-        return "";
+    public String[] swapNames(String fullName) {
+        String[] names = new String[] {fullName};
+        return names;
     }
 
     /***
